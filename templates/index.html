@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Django-3.1.6</title>
+    </head>
+    <body>
+        {% if question_list %}
+            <ul>
+                {% for question in question_list %}
+                    <li>
+                        <ol>
+                            <li>
+                                <a href="{% url 'poll:detail_v1' question.pk %}">{{ question.question }} (v1)</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'poll:detail_v2' question.pk %}">{{ question.question }} (v2)</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'poll:detail_v3' question.pk %}">{{ question.question }} (v3)</a>
+                            </li>
+                        </ol>
+                        <br>
+                        <br>
+                        <br>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <li>
+                there is no avoilable question
+            </li>
+        {% endif %}
+
+    </body>
+</html>
